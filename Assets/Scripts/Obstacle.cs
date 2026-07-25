@@ -5,8 +5,8 @@ public class Obstacle : MonoBehaviour
 {
     public float min_size = 0.5f;
     public float max_size = 3.0f;
-    public float min_speed = 50f;
-    public float max_speed = 400f;
+    public float min_speed = 100f;
+    public float max_speed = 350f;
     public float max_spin_speed = 10f;
     Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
