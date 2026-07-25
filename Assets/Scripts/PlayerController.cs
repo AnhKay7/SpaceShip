@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -10,24 +11,29 @@ public class PlayerController : MonoBehaviour
     public float max_speed = 5f;
     public GameObject booster_flame;
     public UIDocument ui_document;
+    public GameObject explosion_effect;
 
     private float elapsed_time = 0f;
     private float score = 0f;
     private float score_multiplier = 10f;
     private Rigidbody2D rb;
     private Label score_text;
+    private Button restart_button;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         score_text = ui_document.rootVisualElement.Q<Label>("ScoreLabel");
+        restart_button = ui_document.rootVisualElement.Q<Button>("RestartButton");
+        restart_button.style.display = DisplayStyle.None;
+        restart_button.clicked += ReloadScene;
         //booster_flame = GetComponent<GameObject>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // Caculate time alive
+        // Calculate score based on time alive
 
         UpdateScore();
         MovePlayer();
@@ -45,7 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Mouse.current.leftButton.isPressed)
         {
-            // Caculate mouse direction
+            // Calculate mouse direction
             Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
             Vector2 direction = (mouse_pos - transform.position).normalized;
 
@@ -77,5 +83,12 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+        Instantiate(explosion_effect, transform.position, transform.rotation);
+        restart_button.style.display = DisplayStyle.Flex;
+    }
+
+    private void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
