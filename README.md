@@ -21,8 +21,13 @@ Using mouse left click to move a spaceship toward mouse direction, hold left cli
 2. Open the project using Unity 6.3
 3. Open the "game" scene in the assets/scenes folder and press play or press ctrl + p
 
-#Demo
-https://github.com/user-attachments/assets/3428bda9-7f67-495f-bdf2-7be7abff01e1
+# Demo
+
+
+https://github.com/user-attachments/assets/09aebb85-9bfe-41b9-9a76-f5fb7143e2a4
+
+
+
 
 
 
