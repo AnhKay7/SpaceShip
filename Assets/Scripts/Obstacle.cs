@@ -8,7 +8,7 @@ public class Obstacle : MonoBehaviour
     public float min_spawn_speed = 3f;
     public float max__spawn_speed = 6f;
     public float min_speed = 1f;
-    public float max_speed = 10f;
+    public float max_speed = 15f;
     public float max_spin_speed = 10f;
     public GameObject impact_effect;
     private Rigidbody2D rb;

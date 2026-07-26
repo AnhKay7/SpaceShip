@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public UIDocument ui_document;
     public GameObject explosion_effect;
     public GameObject border_parent;
+    public AudioSource explosion_sound;
 
     private float elapsed_time = 0f;
     private float score = 0f;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        explosion_sound.Stop();
         rb = GetComponent<Rigidbody2D>();
         score_text = ui_document.rootVisualElement.Q<Label>("ScoreLabel");
         restart_button = ui_document.rootVisualElement.Q<Button>("RestartButton");
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        explosion_sound.Play();
         Destroy(gameObject);
         border_parent.SetActive(false);
         Instantiate(explosion_effect, transform.position, transform.rotation);
@@ -91,6 +94,8 @@ public class PlayerController : MonoBehaviour
 
     private void ReloadScene()
     {
+        explosion_sound.Stop();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }
