@@ -21,6 +21,11 @@ Using mouse left click to move a spaceship toward mouse direction, hold left cli
 2. Open the project using Unity 6.3
 3. Open the "game" scene in the assets/scenes folder and press play or press ctrl + p
 
+# Acknowlegements
+This project was built as foundational step to practice game development
+- Tutorial reference: The base gameplay loop and mechanics were inspired by the [Game Development] course on Unity Learn: https://learn.unity.com/pathway/game-development
+- Learning outcome: Through this project, I gained hand-on experience with C# scripting, Unity's 2d physics system, and implementing particle visual effects.
+
 # Demo
 
 
