@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject booster_flame;
     public UIDocument ui_document;
     public GameObject explosion_effect;
+    public GameObject border_parent;
 
     private float elapsed_time = 0f;
     private float score = 0f;
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+        border_parent.SetActive(false);
         Instantiate(explosion_effect, transform.position, transform.rotation);
         restart_button.style.display = DisplayStyle.Flex;
     }
